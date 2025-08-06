@@ -10,7 +10,7 @@
     <!-- Fondo con imagen y formulario centrado -->
     <div class="login-bg-split">
         <div class="login-bg-image">
-            <img src="../public/maquinaria.jpg" alt="Fondo de Login">
+            <img src="../public/reciclaje.jpg" alt="Fondo de Login">
         </div>
 
         <div class="login-bg-form">
@@ -19,15 +19,15 @@
                 <div class="info-cards">
                     <div class="info-card">
                         <h2>Misión</h2>
-                        <p>Brindar servicios de seguridad integral y confiable, protegiendo la integridad de personas, bienes e instalaciones, mediante un equipo altamente capacitado, comprometido con la ética, el respeto y la excelencia operativa.</p>
+                        <p>Gestionar residuos reciclables de manera integral, transformando desechos en recursos valiosos para contribuir al cuidado del medio ambiente.</p>
                     </div>
                     <div class="info-card">
                         <h2>Visión</h2>
-                        <p>Ser la empresa de seguridad privada líder a nivel nacional, reconocida por su profesionalismo, innovación tecnológica y compromiso con la tranquilidad de nuestros clientes y la sociedad.</p>
+                        <p>Ser líderes en reciclaje nacional, promoviendo la economía circular e innovación sostenible para un futuro más verde.</p>
                     </div>
                     <div class="info-card">
                         <h2>Alcance</h2>
-                        <p>Este sistema permite gestionar guardias, supervisores, clientes, zonas de vigilancia y turnos de trabajo; además de optimizar las asignaciones de personal y el control de servicios contratados, facilitando una operación eficiente y segura para la empresa y sus clientes.</p>
+                        <p>Sistema de gestión para recolección, clasificación y procesamiento de materiales reciclables, controlando centros de acopio, clientes y proveedores.</p>
                     </div>
                 </div>
 

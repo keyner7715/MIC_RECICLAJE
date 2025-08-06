@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Login - Maquinaria De Alquiler</title>
+    <title>Login - Reciclaje</title>
     <link rel="stylesheet" href="../public/login.css">
     <link rel="stylesheet" href="../public/forms.css">
 </head>
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Fondo con imagen y formulario centrado -->
     <div class="login-bg-split">
         <div class="login-bg-image">
-            <img src="../public/maquinaria.jpg" alt="Fondo de Login">
+            <img src="../public/reciclaje.jpg" alt="Fondo de Login">
         </div>
 
         <div class="login-bg-form">

@@ -7,7 +7,7 @@ verificarPermiso('crear');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre_cliente = trim($_POST['nombre_cliente'] ?? '');
-    $ruc_cedula = trim($_POST['ruc_cedula'] ?? '');
+    $cedula_ruc = trim($_POST['cedula_ruc'] ?? '');
     $direccion = $_POST['direccion'] ?? '';
     $telefono = trim($_POST['telefono'] ?? '');
     $correo = trim($_POST['correo'] ?? '');
@@ -25,19 +25,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     // Validar RUC/Cédula: solo números, exactamente 10 o 13 dígitos
-    if (!empty($ruc_cedula)) {
-        if (!preg_match('/^[0-9]+$/', $ruc_cedula)) {
+    if (!empty($cedula_ruc)) {
+        if (!preg_match('/^[0-9]+$/', $cedula_ruc)) {
             $errores[] = "El RUC/Cédula solo debe contener números.";
-        } elseif (!(strlen($ruc_cedula) === 10 || strlen($ruc_cedula) === 13)) {
+        } elseif (!(strlen($cedula_ruc) === 10 || strlen($cedula_ruc) === 13)) {
             $errores[] = "El RUC/Cédula debe tener exactamente 10 o 13 dígitos.";
         }
     }
 
-    if ($nombre_cliente && $ruc_cedula && $direccion && $telefono && $correo && empty($errores)) {
+    if ($nombre_cliente && $cedula_ruc && $direccion && $telefono && $correo && empty($errores)) {
         try {
-            $sql = "INSERT INTO clientes (nombre_cliente, ruc_cedula, direccion, telefono, correo) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO clientes (nombre_cliente, cedula_ruc, direccion, telefono, correo) VALUES (?, ?, ?, ?, ?)";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$nombre_cliente, $ruc_cedula, $direccion, $telefono, $correo]);
+            $stmt->execute([$nombre_cliente, $cedula_ruc, $direccion, $telefono, $correo]);
 
             echo "<script>alert('Cliente registrado exitosamente'); window.location.href='R_clientes.php';</script>";
         } catch (PDOException $e) {
@@ -82,9 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="text" name="nombre_cliente" id="nombre_cliente" required>
             </div>
             <div class="form-group">
-                <label for="ruc_cedula">RUC/Cédula:</label>
-                <input type="text" name="ruc_cedula" id="ruc_cedula" required maxlength="13">
-                <div id="ruc_error" class="error-message"></div>
+                <label for="cedula_ruc">RUC/Cédula:</label>
+                <input type="text" name="cedula_ruc" id="cedula_ruc" required maxlength="13">
+                <div id="cedula_ruc_error" class="error-message"></div>
             </div>
             <div class="form-group">
                 <label for="direccion">Dirección:</label>

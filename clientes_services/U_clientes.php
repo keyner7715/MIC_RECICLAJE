@@ -6,7 +6,7 @@ require_once '../auth_services/permisos.php';
 verificarPermiso('editar');
 
 $id = $_GET['id'] ?? 0;
-$atraccion = null;
+$cliente = null;
 
 // Obtener los datos de la cliente
 if ($id) {
@@ -28,7 +28,7 @@ if ($id) {
 // Procesar la actualización
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre_cliente = trim($_POST['nombre_cliente'] ?? '');
-    $ruc_cedula = trim($_POST['ruc_cedula'] ?? '');
+    $cedula_ruc = trim($_POST['cedula_ruc'] ?? '');
     $direccion = trim($_POST['direccion'] ?? '');
     $telefono = trim($_POST['telefono'] ?? '');
     $correo = trim($_POST['correo'] ?? '');
@@ -44,18 +44,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
     // Validar RUC/Cédula: solo números, exactamente 10 o 13 dígitos
-    if (!empty($ruc_cedula)) {
-        if (!preg_match('/^[0-9]+$/', $ruc_cedula)) {
+    if (!empty($cedula_ruc)) {
+        if (!preg_match('/^[0-9]+$/', $cedula_ruc)) {
             $errores[] = "El RUC/Cédula solo debe contener números.";
-        } elseif (!(strlen($ruc_cedula) === 10 || strlen($ruc_cedula) === 13)) {
+        } elseif (!(strlen($cedula_ruc) === 10 || strlen($cedula_ruc) === 13)) {
             $errores[] = "El RUC/Cédula debe tener exactamente 10 o 13 dígitos.";
         }
     }
-    if ($nombre_cliente && $ruc_cedula && $direccion && $telefono && $correo && empty($errores)) {
+    if ($nombre_cliente && $cedula_ruc && $direccion && $telefono && $correo && empty($errores)) {
         try {
-            $sql = "UPDATE clientes SET nombre_cliente = ?, ruc_cedula = ?, direccion = ?, telefono = ?, correo = ? WHERE id_cliente = ?";
+            $sql = "UPDATE clientes SET nombre_cliente = ?, cedula_ruc = ?, direccion = ?, telefono = ?, correo = ? WHERE id_cliente = ?";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$nombre_cliente, $ruc_cedula, $direccion, $telefono, $correo, $id]);
+            $stmt->execute([$nombre_cliente, $cedula_ruc, $direccion, $telefono, $correo, $id]);
 
             echo "<script>alert('Cliente actualizado exitosamente'); window.location.href='R_clientes.php';</script>";
         } catch (PDOException $e) {
@@ -90,9 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="text" name="nombre_cliente" id="nombre_cliente" value="<?= htmlspecialchars($cliente['nombre_cliente']) ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="ruc_cedula">RUC/Cédula:</label>
-                    <input type="text" name="ruc_cedula" id="ruc_cedula" value="<?= htmlspecialchars($cliente['ruc_cedula']) ?>" required maxlength="13">
-                    <div id="ruc_error" class="error-message" style="display:none;color:red;font-size:0.9em;margin-top:5px;"></div>
+                    <label for="cedula_ruc">RUC/Cédula:</label>
+                    <input type="text" name="cedula_ruc" id="cedula_ruc" value="<?= htmlspecialchars($cliente['cedula_ruc']) ?>" required maxlength="13">
+                    <div id="cedula_ruc_error" class="error-message" style="display:none;color:red;font-size:0.9em;margin-top:5px;"></div>
                 </div>
                 <div class="form-group">
                     <label for="direccion">Dirección:</label>

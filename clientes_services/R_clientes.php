@@ -55,7 +55,7 @@ try {
                         <tr>
                             <td><?= $cliente['id_cliente'] ?></td>
                             <td><?= htmlspecialchars($cliente['nombre_cliente']) ?></td>
-                            <td><?= htmlspecialchars($cliente['ruc_cedula']) ?></td>
+                            <td><?= htmlspecialchars($cliente['cedula_ruc']) ?></td>
                             <td><?= htmlspecialchars($cliente['direccion']) ?></td>
                             <td><?= htmlspecialchars($cliente['telefono']) ?></td>
                             <td><?= htmlspecialchars($cliente['correo']) ?></td>
